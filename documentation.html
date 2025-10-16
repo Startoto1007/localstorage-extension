@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation - Local Storage Extension</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 20px;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 2px solid #0FBD8C;
+      background-color: #e6f4ef;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #0FBD8C;
+    }
+
+    button#langToggle {
+      padding: 8px 16px;
+      font-size: 0.9em;
+      border: none;
+      border-radius: 4px;
+      background-color: #0DA57A;
+      color: white;
+      cursor: pointer;
+    }
+
+    button#langToggle:hover {
+      background-color: #0A8552;
+    }
+
+    section {
+      margin-top: 20px;
+    }
+
+    h2 {
+      color: #0DA57A;
+    }
+
+    ul {
+      line-height: 1.6;
+    }
+
+    code {
+      background-color: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="pageTitle">Local Storage Extension</h1>
+  <button id="langToggle">FR</button>
+</header>
+
+<section>
+  <h2 id="overviewTitle">Overview</h2>
+  <p id="overviewText">
+    This extension allows you to store and retrieve data directly in the browser's local storage for TurboWarp projects. You can set, get, delete keys, and check if the storage is empty.
+  </p>
+
+  <h2 id="blocksTitle">Blocks</h2>
+  <ul id="blocksList">
+    <li><code>set [KEY] to [VALUE]</code> – Stores a value under a key.</li>
+    <li><code>get [KEY]</code> – Retrieves the value of a key.</li>
+    <li><code>delete [KEY]</code> – Deletes a key from storage.</li>
+    <li><code>key [KEY] exists?</code> – Returns true if a key exists.</li>
+    <li><code>storage is empty?</code> – Returns true if the storage is empty.</li>
+    <li><code>clear storage</code> – Removes all keys from storage.</li>
+  </ul>
+</section>
+
+<script>
+  const translations = {
+    en: {
+      pageTitle: 'Local Storage Extension',
+      langButton: 'FR',
+      overviewTitle: 'Overview',
+      overviewText: "This extension allows you to store and retrieve data directly in the browser's local storage for TurboWarp projects. You can set, get, delete keys, and check if the storage is empty.",
+      blocksTitle: 'Blocks',
+      blocksList: [
+        '<code>set [KEY] to [VALUE]</code> – Stores a value under a key.',
+        '<code>get [KEY]</code> – Retrieves the value of a key.',
+        '<code>delete [KEY]</code> – Deletes a key from storage.',
+        '<code>key [KEY] exists?</code> – Returns true if a key exists.',
+        '<code>storage is empty?</code> – Returns true if the storage is empty.',
+        '<code>clear storage</code> – Removes all keys from storage.'
+      ]
+    },
+    fr: {
+      pageTitle: 'Extension Stockage Local',
+      langButton: 'EN',
+      overviewTitle: 'Présentation',
+      overviewText: "Cette extension permet de stocker et de récupérer des données directement dans le stockage local du navigateur pour les projets TurboWarp. Vous pouvez définir, lire, supprimer des clés et vérifier si le stockage est vide.",
+      blocksTitle: 'Blocs',
+      blocksList: [
+        '<code>mettre [VALUE] dans [KEY]</code> – Stocke une valeur sous une clé.',
+        '<code>lire [KEY]</code> – Lit la valeur d\'une clé.',
+        '<code>supprimer [KEY]</code> – Supprime une clé du stockage.',
+        '<code>la clé [KEY] existe ?</code> – Renvoie vrai si la clé existe.',
+        '<code>stockage vide ?</code> – Renvoie vrai si le stockage est vide.',
+        '<code>vider le stockage</code> – Supprime toutes les clés du stockage.'
+      ]
+    }
+  };
+
+  let currentLang = 'en';
+
+  const pageTitle = document.getElementById('pageTitle');
+  const langToggle = document.getElementById('langToggle');
+  const overviewTitle = document.getElementById('overviewTitle');
+  const overviewText = document.getElementById('overviewText');
+  const blocksTitle = document.getElementById('blocksTitle');
+  const blocksList = document.getElementBy
