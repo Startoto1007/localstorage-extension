@@ -1,130 +1,185 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentation - Local Storage Extension</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0 20px;
-      background-color: #f8f8f8;
-      color: #333;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      border-bottom: 2px solid #0FBD8C;
-      background-color: #e6f4ef;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 1.8em;
-      color: #0FBD8C;
-    }
-
-    button#langToggle {
-      padding: 8px 16px;
-      font-size: 0.9em;
-      border: none;
-      border-radius: 4px;
-      background-color: #0DA57A;
-      color: white;
-      cursor: pointer;
-    }
-
-    button#langToggle:hover {
-      background-color: #0A8552;
-    }
-
-    section {
-      margin-top: 20px;
-    }
-
-    h2 {
-      color: #0DA57A;
-    }
-
-    ul {
-      line-height: 1.6;
-    }
-
-    code {
-      background-color: #eee;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Extension - Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 8px 16px;
+            background-color: #0FBD8C;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .language-switch:hover {
+            background-color: #0DA57A;
+        }
+        .header {
+            margin-top: 60px;
+            text-align: center;
+            color: #0A8552;
+        }
+        .block {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .block-title {
+            color: #0FBD8C;
+            margin-bottom: 10px;
+        }
+        [lang="fr"] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <button class="language-switch" onclick="toggleLanguage()">Français</button>
 
-<header>
-  <h1 id="pageTitle">Local Storage Extension</h1>
-  <button id="langToggle">FR</button>
-</header>
+    <!-- English Version -->
+    <div lang="en">
+        <div class="header">
+            <h1>Local Storage Extension Documentation</h1>
+            <p>A simple extension for Turbowarp that allows access to and modification of localStorage when the project is compiled to HTML.</p>
+        </div>
 
-<section>
-  <h2 id="overviewTitle">Overview</h2>
-  <p id="overviewText">
-    This extension allows you to store and retrieve data directly in the browser's local storage for TurboWarp projects. You can set, get, delete keys, and check if the storage is empty.
-  </p>
+        <h2>Available Blocks</h2>
 
-  <h2 id="blocksTitle">Blocks</h2>
-  <ul id="blocksList">
-    <li><code>set [KEY] to [VALUE]</code> – Stores a value under a key.</li>
-    <li><code>get [KEY]</code> – Retrieves the value of a key.</li>
-    <li><code>delete [KEY]</code> – Deletes a key from storage.</li>
-    <li><code>key [KEY] exists?</code> – Returns true if a key exists.</li>
-    <li><code>storage is empty?</code> – Returns true if the storage is empty.</li>
-    <li><code>clear storage</code> – Removes all keys from storage.</li>
-  </ul>
-</section>
+        <div class="block">
+            <h3 class="block-title">set [KEY] to [VALUE]</h3>
+            <p>Stores a value in localStorage associated with the specified key.</p>
+            <ul>
+                <li><strong>KEY:</strong> The name of the storage location (text)</li>
+                <li><strong>VALUE:</strong> The value to store (text)</li>
+            </ul>
+        </div>
 
-<script>
-  const translations = {
-    en: {
-      pageTitle: 'Local Storage Extension',
-      langButton: 'FR',
-      overviewTitle: 'Overview',
-      overviewText: "This extension allows you to store and retrieve data directly in the browser's local storage for TurboWarp projects. You can set, get, delete keys, and check if the storage is empty.",
-      blocksTitle: 'Blocks',
-      blocksList: [
-        '<code>set [KEY] to [VALUE]</code> – Stores a value under a key.',
-        '<code>get [KEY]</code> – Retrieves the value of a key.',
-        '<code>delete [KEY]</code> – Deletes a key from storage.',
-        '<code>key [KEY] exists?</code> – Returns true if a key exists.',
-        '<code>storage is empty?</code> – Returns true if the storage is empty.',
-        '<code>clear storage</code> – Removes all keys from storage.'
-      ]
-    },
-    fr: {
-      pageTitle: 'Extension Stockage Local',
-      langButton: 'EN',
-      overviewTitle: 'Présentation',
-      overviewText: "Cette extension permet de stocker et de récupérer des données directement dans le stockage local du navigateur pour les projets TurboWarp. Vous pouvez définir, lire, supprimer des clés et vérifier si le stockage est vide.",
-      blocksTitle: 'Blocs',
-      blocksList: [
-        '<code>mettre [VALUE] dans [KEY]</code> – Stocke une valeur sous une clé.',
-        '<code>lire [KEY]</code> – Lit la valeur d\'une clé.',
-        '<code>supprimer [KEY]</code> – Supprime une clé du stockage.',
-        '<code>la clé [KEY] existe ?</code> – Renvoie vrai si la clé existe.',
-        '<code>stockage vide ?</code> – Renvoie vrai si le stockage est vide.',
-        '<code>vider le stockage</code> – Supprime toutes les clés du stockage.'
-      ]
-    }
-  };
+        <div class="block">
+            <h3 class="block-title">get [KEY]</h3>
+            <p>Retrieves the value associated with the specified key from localStorage.</p>
+            <ul>
+                <li><strong>KEY:</strong> The name of the storage location to read from (text)</li>
+                <li><strong>Returns:</strong> The stored value, or empty string if the key doesn't exist</li>
+            </ul>
+        </div>
 
-  let currentLang = 'en';
+        <div class="block">
+            <h3 class="block-title">delete [KEY]</h3>
+            <p>Removes the specified key and its value from localStorage.</p>
+            <ul>
+                <li><strong>KEY:</strong> The name of the storage location to delete (text)</li>
+            </ul>
+        </div>
 
-  const pageTitle = document.getElementById('pageTitle');
-  const langToggle = document.getElementById('langToggle');
-  const overviewTitle = document.getElementById('overviewTitle');
-  const overviewText = document.getElementById('overviewText');
-  const blocksTitle = document.getElementById('blocksTitle');
-  const blocksList = document.getElementBy
+        <div class="block">
+            <h3 class="block-title">key [KEY] exists?</h3>
+            <p>Checks if a key exists in localStorage.</p>
+            <ul>
+                <li><strong>KEY:</strong> The name of the storage location to check (text)</li>
+                <li><strong>Returns:</strong> true if the key exists, false otherwise</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3 class="block-title">storage is empty?</h3>
+            <p>Checks if localStorage is empty (contains no items).</p>
+            <ul>
+                <li><strong>Returns:</strong> true if localStorage is empty, false otherwise</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3 class="block-title">clear storage</h3>
+            <p>Removes all keys and values from localStorage.</p>
+        </div>
+    </div>
+
+    <!-- French Version -->
+    <div lang="fr">
+        <div class="header">
+            <h1>Documentation de l'extension Local Storage</h1>
+            <p>Une extension simple pour Turbowarp permettant d'accéder et de modifier le localStorage lorsque le projet est compilé en HTML.</p>
+        </div>
+
+        <h2>Blocs Disponibles</h2>
+
+        <div class="block">
+            <h3 class="block-title">définir [CLÉ] à [VALEUR]</h3>
+            <p>Stocke une valeur dans le localStorage associée à la clé spécifiée.</p>
+            <ul>
+                <li><strong>CLÉ :</strong> Le nom de l'emplacement de stockage (texte)</li>
+                <li><strong>VALEUR :</strong> La valeur à stocker (texte)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3 class="block-title">obtenir [CLÉ]</h3>
+            <p>Récupère la valeur associée à la clé spécifiée dans le localStorage.</p>
+            <ul>
+                <li><strong>CLÉ :</strong> Le nom de l'emplacement de stockage à lire (texte)</li>
+                <li><strong>Retourne :</strong> La valeur stockée, ou une chaîne vide si la clé n'existe pas</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3 class="block-title">supprimer [CLÉ]</h3>
+            <p>Supprime la clé spécifiée et sa valeur du localStorage.</p>
+            <ul>
+                <li><strong>CLÉ :</strong> Le nom de l'emplacement de stockage à supprimer (texte)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3 class="block-title">la clé [CLÉ] existe ?</h3>
+            <p>Vérifie si une clé existe dans le localStorage.</p>
+            <ul>
+                <li><strong>CLÉ :</strong> Le nom de l'emplacement de stockage à vérifier (texte)</li>
+                <li><strong>Retourne :</strong> vrai si la clé existe, faux sinon</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3 class="block-title">stockage est vide ?</h3>
+            <p>Vérifie si le localStorage est vide (ne contient aucun élément).</p>
+            <ul>
+                <li><strong>Retourne :</strong> vrai si le localStorage est vide, faux sinon</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3 class="block-title">vider le stockage</h3>
+            <p>Supprime toutes les clés et valeurs du localStorage.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleLanguage() {
+            const button = document.querySelector('.language-switch');
+            const enContent = document.querySelector('[lang="en"]');
+            const frContent = document.querySelector('[lang="fr"]');
+            
+            if (enContent.style.display !== 'none') {
+                enContent.style.display = 'none';
+                frContent.style.display = 'block';
+                button.textContent = 'English';
+            } else {
+                enContent.style.display = 'block';
+                frContent.style.display = 'none';
+                button.textContent = 'Français';
+            }
+        }
+    </script>
+</body>
+</html>
