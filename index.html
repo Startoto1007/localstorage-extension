@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Web Local Storage+</title>
+    <!-- Styles pour scratchblocks -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/scratchblocks/scratchblocks@3.6.4/build/scratchblocks.min.css">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .block-example {
+            margin: 20px 0;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        h1, h2, h3 {
+            color: #0FBD8C;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .note {
+            background: #e1f5f2;
+            border-left: 4px solid #0FBD8C;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Documentation - Web Local Storage+</h1>
+
+    <h2>Introduction</h2>
+    <p>Web Local Storage+ est une extension pour Scratch qui permet de stocker des données de manière persistante dans le navigateur. Elle offre des fonctionnalités avancées comme :</p>
+    <ul>
+        <li>Support des espaces de noms (namespaces)</li>
+        <li>Chiffrement des données avec mot de passe</li>
+        <li>Gestion des listes Scratch</li>
+        <li>Import/Export en JSON</li>
+        <li>Interface bilingue (Français/Anglais)</li>
+    </ul>
+
+    <h2>Installation</h2>
+    <p>Pour utiliser cette extension dans votre projet Scratch :</p>
+    <ol>
+        <li>Ouvrez l'éditeur Scratch</li>
+        <li>Cliquez sur le bouton d'ajout d'extension (icône en bas à gauche)</li>
+        <li>Choisissez "Web Local Storage+" dans la liste</li>
+    </ol>
+
+    <h2>Blocs disponibles</h2>
+
+    <h3>Configuration</h3>
+    <div class="block-example">
+        <pre class="blocks">définir l'espace de noms sur [default]</pre>
+        <p>Définit un espace de noms pour isoler les données. Utile pour séparer les données de différents projets.</p>
+    </div>
+
+    <div class="block-example">
+        <pre class="blocks">définir le mot de passe sur [motdepasse]</pre>
+        <p>Active le chiffrement des données avec un mot de passe. Laissez vide pour désactiver le chiffrement.</p>
+    </div>
+
+    <h3>Opérations de base</h3>
+    <div class="block-example">
+        <pre class="blocks">mettre [clé] à [valeur]</pre>
+        <p>Stocke une valeur associée à une clé.</p>
+    </div>
+
+    <div class="block-example">
+        <pre class="blocks">obtenir [clé]</pre>
+        <p>Récupère la valeur associée à une clé.</p>
+    </div>
+
+    <div class="block-example">
+        <pre class="blocks">supprimer [clé]</pre>
+        <p>Supprime une donnée du stockage.</p>
+    </div>
+
+    <div class="block-example">
+        <pre class="blocks">la clé [clé] existe ?</pre>
+        <p>Vérifie si une clé existe dans le stockage.</p>
+    </div>
+
+    <h3>Gestion des listes</h3>
+    <div class="block-example">
+        <pre class="blocks">sauvegarder la liste [liste v] sous [clé]</pre>
+        <p>Sauvegarde une liste Scratch dans le stockage.</p>
+    </div>
+
+    <div class="block-example">
+        <pre class="blocks">charger [clé] dans la liste [liste v]</pre>
+        <p>Charge des données du stockage dans une liste Scratch.</p>
+    </div>
+
+    <h3>Import/Export</h3>
+    <div class="block-example">
+        <pre class="blocks">exporter le stockage en JSON</pre>
+        <p>Exporte toutes les données de l'espace de noms actuel en format JSON.</p>
+    </div>
+
+    <div class="block-example">
+        <pre class="blocks">importer le stockage depuis JSON [{"clé":"valeur"}]</pre>
+        <p>Importe des données JSON dans le stockage.</p>
+    </div>
+
+    <h3>Autres fonctionnalités</h3>
+    <div class="block-example">
+        <pre class="blocks">toutes les clés du stockage</pre>
+        <p>Retourne la liste des clés dans l'espace de noms actuel.</p>
+    </div>
+
+    <div class="block-example">
+        <pre class="blocks">vider le stockage</pre>
+        <p>Supprime toutes les données de l'espace de noms actuel.</p>
+    </div>
+
+    <div class="block-example">
+        <pre class="blocks">utilise le vrai localStorage ?</pre>
+        <p>Vérifie si l'extension utilise le vrai localStorage du navigateur ou une version simulée.</p>
+    </div>
+
+    <div class="block-example">
+        <pre class="blocks">quand le stockage change</pre>
+        <p>Événement déclenché lorsque le stockage est modifié dans une autre fenêtre.</p>
+    </div>
+
+    <h2>Exemples d'utilisation</h2>
+
+    <h3>Sauvegarde d'un score</h3>
+    <div class="block-example">
+        <pre class="blocks">
+quand le drapeau vert pressé
+définir l'espace de noms sur [monJeu]
+si <la clé [meilleurScore] existe ?> alors
+mettre [score] à (obtenir [meilleurScore])
+</pre>
+    </div>
+
+    <h3>Sauvegarde avec mot de passe</h3>
+    <div class="block-example">
+        <pre class="blocks">
+définir le mot de passe sur [secret123]
+mettre [données] à [information confidentielle]
+définir le mot de passe sur []
+</pre>
+    </div>
+
+    <div class="note">
+        <strong>Note :</strong> Les données sont persistantes entre les sessions, mais uniquement dans le même navigateur. 
+        Le chiffrement n'est pas destiné à une sécurité maximale, mais plutôt à une protection basique des données.
+    </div>
+
+    <!-- Scripts nécessaires pour render-scratchblocks -->
+    <script src="https://cdn.jsdelivr.net/gh/scratchblocks/scratchblocks@3.6.4/build/scratchblocks.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/scratchblocks/scratchblocks@3.6.4/build/translations.js"></script>
+    <script>
+        // Rendu des blocs dans les balises pre.blocks
+        scratchblocks.renderMatching('pre.blocks', {
+            style: 'scratch3',
+            languages: ['fr'],
+            scale: 1
+        });
+    </script>
+</body>
+</html>
